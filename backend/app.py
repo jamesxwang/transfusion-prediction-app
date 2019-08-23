@@ -17,4 +17,4 @@ def hello():
 #     # print(y_val_prdt, test_preds, y_val_pred)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
