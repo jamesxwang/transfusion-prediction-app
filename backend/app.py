@@ -6,6 +6,7 @@ import numpy as np
 import json
 
 app = Flask(__name__)
+CORS(app, resources=r'/*')
 
 def predict_probabilities(input_data):
     keys = [
@@ -63,10 +64,15 @@ def predict_probabilities(input_data):
 
 @app.route('/api/predict', methods = ['POST'])
 def predict():
+    
     if request.headers['Content-Type'] == 'application/json':
         input_data = request.json
         result = predict_probabilities(input_data)
-        return jsonify(isError= False, message= "Success", statusCode= 200, data= result), 200
+        response = jsonify(isError= False, message= "Success", statusCode= 200, data= result), 200
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
+        response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
+        return response
     return jsonify(isError= True, message= "Error", statusCode= 404), 200
 
 if __name__ == '__main__':
