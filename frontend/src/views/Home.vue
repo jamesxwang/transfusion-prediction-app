@@ -13,8 +13,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Gender:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="data.gender" placeholder="Gender">
-              <el-option value=0 label="Male"></el-option>
-              <el-option value=1 label="Female"></el-option>
+              <el-option
+                v-for="item in gender"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -49,8 +53,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Atrial Fibrillation:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Atrial Fibrillation']" placeholder="Atrial Fibrillation">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -58,8 +66,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Left Ventricular Enlargement:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Left Ventricular Enlargement']" placeholder="Left Ventricular Enlargement">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -67,8 +79,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Treated Hypertension:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Treated Hypertension']" placeholder="Treated Hypertension">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -76,8 +92,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Diabetes mellitus:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Diabetes mellitus']" placeholder="Diabetes mellitus">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -85,8 +105,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Anemia:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Anemia']" placeholder="Anemia">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -94,8 +118,12 @@
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Cerebrovascular diseases:</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Cerebrovascular diseases']" placeholder="Cerebrovascular diseases">
-              <el-option value=1 label="Yes"></el-option>
-              <el-option value=0 label="No"></el-option>
+              <el-option
+                v-for="item in yes_or_no"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
             </el-select>
           </el-col>
         </el-row>
@@ -226,7 +254,9 @@ export default {
   data() {
     return {
       active: 0,
+      gender: [{value: 0, label: 'Male'},{value: 1, label: 'Female'}],
       blood_type: [{value: 1, label: 'A'}, {value: 2, label: 'B'},{value: 3, label: 'O'}, {value: 4, label: 'AB'}],
+      yes_or_no: [{value: 1, label: 'Yes'}, {value: 0, label: 'No'}],
       data: {
         gender: '',
         blood_type: ''
