@@ -1,5 +1,6 @@
 flask
 joblib
 xgboost
-# sklearn
-scikit-learn
+# scikit-learn
+pandas
+xlrd

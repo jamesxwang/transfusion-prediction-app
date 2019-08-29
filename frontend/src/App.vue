@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-container> 
+    <el-container class="main"> 
       <el-header>
         <div id="nav">
           <router-link to="/">Home</router-link> |
@@ -32,5 +32,8 @@
       color: #42b983;
     }
   }
+}
+.main {
+  height: 100vh;
 }
 </style>
