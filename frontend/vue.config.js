@@ -1,6 +1,6 @@
 module.exports = {
     productionSourceMap: false,
-    publicPath: process.env.NODE_ENV === 'production' ? 'http://106.52.236.232:5000/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? 'http://www.transfusionprediction.cn/' : '/',
     devServer: { 
       disableHostCheck: true,
       host: '0.0.0.0',
