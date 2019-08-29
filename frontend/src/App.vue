@@ -4,7 +4,7 @@
       <el-header>
         <div id="nav">
           <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
+          <router-link to="/prediction">Prediction</router-link>
         </div>
       </el-header>
       <el-main>
@@ -32,6 +32,10 @@
       color: #42b983;
     }
   }
+}
+.el-header {
+  background-color: #fff;
+  z-index: 10000;
 }
 .main {
   height: 100vh;
