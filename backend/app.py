@@ -67,7 +67,6 @@ def predict_probabilities(self, input_data):
 @app.route('/predict', methods = ['POST'])
 def predict(self, parameter_list):
     data = request.form
-    self.
     print(data)
     return jsonify(isError= False,
                     message= "Success",
