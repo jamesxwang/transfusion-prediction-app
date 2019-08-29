@@ -219,7 +219,7 @@
 <style lang="scss" scoped>
 .main_container {
   width: 80%;
-  margin: 0 auto;
+  margin: 2em auto;
   .step_container {
     margin: 0 0 2em 0;
   }
@@ -322,6 +322,7 @@ export default {
       if (this.validate()) {
         this.postData().then(res => {
           console.log(res)
+          this.$router.push({ name: 'prediction', params: { result : res.data } })
         }, error => {
           this.$message.error(error)
         })
