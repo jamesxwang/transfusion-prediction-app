@@ -7,10 +7,7 @@ import json
 
 app = Flask(__name__)
 
-
-
-
-def predict_probabilities(self, input_data):
+def predict_probabilities(input_data):
     keys = [
         "Age",
         "Height(cm)",
@@ -50,7 +47,7 @@ def predict_probabilities(self, input_data):
     obj = {}
     for key in keys:
         obj[key] = 0
-    inputJSON = pd.read_json('./models/test_data.json', orient='index')
+    inputJSON = pd.read_json(json.dumps(input_data), orient='index')
     for col in inputJSON.columns:
         obj[col] = inputJSON.loc[0][col]
     input_dataframe = pd.DataFrame.from_dict({"0": obj}, orient='index')
@@ -64,15 +61,13 @@ def predict_probabilities(self, input_data):
     return(result)
 
 
-@app.route('/predict', methods = ['POST'])
-def predict(self, parameter_list):
-    data = request.form
-    self.
-    print(data)
-    return jsonify(isError= False,
-                    message= "Success",
-                    statusCode= 200,
-                    data= data), 200
+@app.route('/api/predict', methods = ['POST'])
+def predict():
+    if request.headers['Content-Type'] == 'application/json':
+        input_data = request.json
+        result = predict_probabilities(input_data)
+        return jsonify(isError= False, message= "Success", statusCode= 200, data= result), 200
+    return jsonify(isError= True, message= "Error", statusCode= 404), 200
 
 if __name__ == '__main__':
     app.run(debug=False)
