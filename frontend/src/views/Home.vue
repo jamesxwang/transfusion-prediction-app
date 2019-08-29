@@ -331,7 +331,7 @@ export default {
     postData() {
       return new Promise((resolve, reject) => {
         this.$axios({
-          url: '/api/predict',
+          url: 'http://106.52.236.232:5000/api/predict',
           method: 'post',
           data: {"0": this.form}
         }).then(res=>{
