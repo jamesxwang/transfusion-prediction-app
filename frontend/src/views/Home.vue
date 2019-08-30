@@ -102,7 +102,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Anemia:</el-col>
+          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Anemia (< 13 g/dL for males/< 12 g/dL for females respectively):</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Anemia']" placeholder="Anemia">
               <el-option
