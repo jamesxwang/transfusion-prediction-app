@@ -69,12 +69,12 @@ def predict():
     if request.headers['Content-Type'] == 'application/json':
         input_data = request.json
         result = predict_probabilities(input_data)
-        response = jsonify(isError= False, message= "Success", statusCode= 200, data= result), 200
+        response = jsonify(isError= False, message= "Success", statusCode= 200, data= result)
         response.headers['Access-Control-Allow-Origin'] = '*'
         response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,HEAD,GET,POST'
         response.headers['Access-Control-Allow-Headers'] = 'x-requested-with'
         return response
-    return jsonify(isError= True, message= "Error", statusCode= 404), 200
+    return jsonify(isError= True, message= "Error", statusCode= 404)
 
 @app.route('/', methods = ['GET'])
 def hello():
