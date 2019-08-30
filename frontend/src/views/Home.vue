@@ -151,11 +151,11 @@
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Red Blood Cell (RBC, 10^12/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Red Blood Cell (RBC, 10^12\/L)']" placeholder="Red Blood Cell (RBC, 10^12/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Red Blood Cell (RBC, 10^12\/L)']" placeholder="Red Blood Cell (RBC, 10^12/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">White Blood Cell(WBC, 10^9/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['White Blood Cell(WBC, 10^9\/L)']" placeholder="White Blood Cell(WBC, 10^9/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['White Blood Cell(WBC, 10^9\/L)']" placeholder="White Blood Cell(WBC, 10^9/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Platelet Count (PLT, 10^9/L):</el-col>
@@ -175,31 +175,31 @@
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Total protein(TP, g/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Total protein(TP, g\/L)']" placeholder="Total protein(TP, g/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Total protein(TP, g\/L)']" placeholder="Total protein(TP, g/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Albumin(ALB, g/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Albumin(ALB, g\/L)']" placeholder="Albumin(ALB, g/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Albumin(ALB, g\/L)']" placeholder="Albumin(ALB, g/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Globulin(GLO, g/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Globulin(GLO, g\/L)']" placeholder="Globulin(GLO, g/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Globulin(GLO, g\/L)']" placeholder="Globulin(GLO, g/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Aspertate Aminotransferase(AST, U/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Aspertate Aminotransferase(AST, U\/L)']" placeholder="Aspertate Aminotransferase(AST, U/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Aspertate Aminotransferase(AST, U\/L)']" placeholder="Aspertate Aminotransferase(AST, U/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Alanine Transaminase (ALT, U/L):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Alanine Transaminase (ALT, U\/L)']" placeholder="Alanine Transaminase (ALT, U/L)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Alanine Transaminase (ALT, U\/L)']" placeholder="Alanine Transaminase (ALT, U/L)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Prothrombin(PT, s):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['Prothrombin(PT, s)']" placeholder="Prothrombin(PT, s)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Prothrombin(PT, s)']" placeholder="Prothrombin(PT, s)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">INR International Normalized Ratio(INR):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input type="number" v-model.number="form['INR International Normalized Ratio(INR)']" placeholder="INR International Normalized Ratio(INR)"></el-input></el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['INR International Normalized Ratio(INR)']" placeholder="INR International Normalized Ratio(INR)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Left ventricular ejection fraction(LVEF, %):</el-col>
