@@ -4,6 +4,7 @@ import joblib
 import pandas as pd
 import numpy as np
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, resources=r'/*')
