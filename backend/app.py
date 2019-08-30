@@ -76,5 +76,9 @@ def predict():
         return response
     return jsonify(isError= True, message= "Error", statusCode= 404), 200
 
+@app.route('/', methods = ['GET'])
+def hello():
+    return "OK"
+
 if __name__ == '__main__':
     app.run(debug=False)
