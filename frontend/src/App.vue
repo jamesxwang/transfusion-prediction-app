@@ -2,10 +2,10 @@
   <div id="app">
     <el-container class="main"> 
       <el-header>
-        <div id="nav">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/prediction">Prediction</router-link>
-        </div>
+        <router-link to="/">
+          <div id="logo"></div>
+        </router-link>     
+        <div class="nav_text">Transfusion Prediction</div>
       </el-header>
       <el-main>
         <router-view/>
@@ -14,7 +14,7 @@
     </el-container>
   </div>
 </template>
-      
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -23,21 +23,29 @@
   // text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#logo {
+  background-image: url('assets/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2em;
+  height: 2em;
+  float: left;
+}
+.nav_text {
+  color: #fff;
+  text-align: center;
+  // overflow: hidden;
+  font-size: large;
+  // vertical-align: middle;
 }
 .el-header {
-  background-color: #fff;
+  background-color: #303133;
   z-index: 10000;
 }
 .main {
   height: 100vh;
 }
+// div{
+//   margin: 20px auto;
+// }
 </style>

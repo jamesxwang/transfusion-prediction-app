@@ -14,6 +14,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/form',
+      name: 'form',
+      component: () => import('./views/Form.vue')
+    },
+    {
       path: '/prediction',
       name: 'prediction',
       component: () => import('./views/Prediction.vue')
