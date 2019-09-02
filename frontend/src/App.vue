@@ -30,12 +30,14 @@
   width: 2em;
   height: 2em;
   float: left;
+  margin: 1em auto;
 }
 .nav_text {
   color: #fff;
   text-align: center;
-  // overflow: hidden;
+  overflow: hidden;
   font-size: large;
+  margin: 1em auto;
   // vertical-align: middle;
 }
 .el-header {
