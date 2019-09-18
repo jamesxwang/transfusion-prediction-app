@@ -3,6 +3,7 @@ import pickle
 import joblib
 import pandas as pd
 import numpy as np
+import shap
 import json
 from flask_cors import CORS
 
@@ -58,14 +59,43 @@ def predict_probabilities(input_data):
     pred_proba = np.zeros((input_dataframe.shape[0], cv_num))
     for i in range(cv_num):                
         pred_proba[:,i] = models[i].predict_proba(input_dataframe)[:,1]
+        if i == 0:
+            shap_values = shap.TreeExplainer(models[i]).shap_values(input_dataframe)
+        else:
+            shap_values = shap_values + shap.TreeExplainer(models[i]).shap_values(input_dataframe)
     pred_proba = pred_proba.mean(axis=1)
     result = int(pred_proba>0.7)
-    return(result)
+    explainer = shap.TreeExplainer(models[0])
+    shap_values = explainer.shap_values(input_dataframe)
+    positiveTotal = 0
+    negativeTotal = 0
+    for value in shap_values[0,:]:
+        if value >= 0:
+            positiveTotal = positiveTotal + value
+        else:
+            negativeTotal = negativeTotal + value
+    nvs = zip(keys,shap_values[0,:])
+    nvDict = dict( (name,value) for name,value in nvs)
+    L = sorted(nvDict.items(),key=lambda item:item[1],reverse=True)
+    positiveL = L[:5]
+    negativeL = L[-5:]
+
+    positivePercentageL = [ ( x[0], str(abs(x[1])/abs(positiveTotal)) ) for (i,x) in enumerate(positiveL) ]
+    negativePercentageL = [ ( x[0], str(abs(x[1])/abs(negativeTotal)) ) for (i,x) in enumerate(negativeL) ]
+
+    response = {
+        'result': result,
+        'base_value': str(explainer.expected_value),
+        'data': {
+            'negative': negativePercentageL,
+            'positive': positivePercentageL
+        }
+    }
+    return(response)
 
 
 @app.route('/api/predict', methods = ['POST'])
 def predict():
-    
     if request.headers['Content-Type'] == 'application/json':
         input_data = request.json
         result = predict_probabilities(input_data)
