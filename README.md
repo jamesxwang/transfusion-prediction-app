@@ -1,7 +1,7 @@
 # transfusion-prediction-app
 
 ## Links  
-App: [http://transfusionprediction.cn](http://106.52.236.232)
+App: [http://transfusionprediction.cn](http://transfusionprediction.cn) 
 Jenkins: [Jenkins (Admin Login required)](http://106.52.236.232:8080)
 
 变量填写列表：
