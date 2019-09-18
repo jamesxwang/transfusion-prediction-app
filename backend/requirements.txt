@@ -4,3 +4,4 @@ xgboost
 pandas
 xlrd
 flask-cors
+shap==0.23.0
