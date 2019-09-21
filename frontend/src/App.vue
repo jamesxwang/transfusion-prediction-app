@@ -42,7 +42,7 @@
 }
 .el-header {
   background-color: #303133;
-  z-index: 10000;
+  z-index: 100;
 }
 .main {
   height: 100vh;

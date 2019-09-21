@@ -1,24 +1,136 @@
 <template>
   <div class="prediction">
-    <h1 v-if="predictionResult != -1">Result: {{ predictionResult }}</h1>
+    <!-- v-if="predictionResult && typeof predictionResult === 'number'" -->
+    <div v-if="predictionResult && typeof predictionResult === 'number'">
+      <h1>{{ computedResult }}</h1>
+      <div id="chart">
+        <apexchart type=bar height=500 :options="chartOptions" :series="chartOptions.series" />
+      </div>
+    </div>
+    <!-- <button @click="updateChart">Update</button> -->
+    <!-- v-else -->
     <h1 v-else>This is the prediction page</h1>
   </div>
 </template>
 
 <script>
+import VueApexCharts from 'vue-apexcharts'
+
 export default {
   name: 'prediction',
-  data() {
-    return {
-      predictionResult: -1
+  components: {
+    apexchart: VueApexCharts,
+  },
+  methods: {
+    updateChart() {
+      this.chartOptions = {...this.chartOptions, ...{
+        series: [
+          {
+            name: 'Positive',
+            data: this.positiveChartData
+          },
+          {
+            name: 'Negative',
+            data: this.negativeChartData
+          }
+        ],
+        xaxis: {
+          categories: this.categories
+        }
+      }}
     }
   },
+  data() {
+    return {
+      predictionResult: '',
+      negativeChartData: [],
+      positiveChartData: [],
+      categories: [],
+      chartOptions: {
+        chart: {
+          stacked: true
+        },
+        colors: ['#008FFB', '#FF4560'],
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: '80%',
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"]
+        },
+        grid: {
+          xaxis: {
+            showLines: false
+          }
+        },
+        yaxis: {
+          min: -50,
+          max: 50,
+          title: {
+            // text: 'Labels',
+          },
+        },
+        tooltip: {
+          shared: false,
+          x: {
+            formatter: function (val) {
+              return val
+            }
+          },
+          y: {
+            formatter: function (val) {
+              return Math.abs(val) + "%"
+            }
+          }
+        },
+        title: {
+          text: 'Transfusion Prediction Relevance Chart'
+        },
+        xaxis: {
+          categories: [],
+          title: {
+            text: 'Percent'
+          },
+          labels: {
+            formatter: function (val) {
+              return Math.abs(Math.round(val)) + "%"
+            }
+          }
+        }
+      },
+
+    }
+  },
+  computed: {
+    computedResult: function () {
+      if (this.predictionResult === 0) {
+        return 'Result: No need for blood transfusion.'
+      } else if (this.predictionResult === 1) {
+        return 'Result: Blood Transfusion needed.'
+      } else {
+        return ''
+      }
+    },
+  },
   watch: {
-    'this.$route.params.result': function(val) {
-      if (val == 1)
-        this.predictionResult = true;
-      else if (val == 0)
-        this.predictionResult = false;
+    '$route.params': {
+      handler: function (val) {
+        if (val && val.negativeChartData && val.positiveChartData && val.categories) {
+          this.predictionResult = val.result
+          this.negativeChartData = val.negativeChartData
+          this.positiveChartData = val.positiveChartData
+          this.categories = val.categories
+          this.updateChart()
+        }
+      },
+      deep: true,
+      immediate: true
     }
   }
 }
