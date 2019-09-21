@@ -55,7 +55,7 @@ export default {
           bar: {
             horizontal: true,
             barHeight: '80%',
-          },
+          }
         },
         dataLabels: {
           enabled: false
@@ -71,8 +71,8 @@ export default {
         },
         yaxis: {
           title: {
-            // text: 'Labels',
-          },
+            text: 'Percentage',
+          }
         },
         tooltip: {
           shared: false,
@@ -97,13 +97,8 @@ export default {
               return Math.abs(Math.round(val)) + "%"
             }
           }
-        },
-        yaxis: {
-          title: {
-            text: 'Percent'
-          }
         }
-      },
+      }
 
     }
   },
