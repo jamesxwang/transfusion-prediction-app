@@ -102,7 +102,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Anemia (< 13 g/dL for males/< 12 g/dL for females respectively):</el-col>
+          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Anemia (&lt; 13g/dL for males /&lt; 12g/dL for females respectively):</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-select v-model.number="form['Anemia']" placeholder="Anemia">
               <el-option
@@ -198,8 +198,8 @@
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['Prothrombin(PT, s)']" placeholder="Prothrombin(PT, s)"></el-input></el-col>
         </el-row>
         <el-row>
-          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">INR International Normalized Ratio(INR):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['INR International Normalized Ratio(INR)']" placeholder="INR International Normalized Ratio(INR)"></el-input></el-col>
+          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">International Normalized Ratio(INR):</el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8"><el-input v-model.number="form['INR International Normalized Ratio(INR)']" placeholder="International Normalized Ratio(INR)"></el-input></el-col>
         </el-row>
         <el-row>
           <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Left ventricular ejection fraction(LVEF, %):</el-col>
@@ -298,18 +298,22 @@ export default {
         "Blood Type_B": '',
         "Blood Type_O": '',
         "Extracorporeal circulation priming volume\/Body Mass Index": ''
-      }
+      },
+      negativeChartData: [],
+      positiveChartData: [],
     }
   },
   methods: {
     validate() {
+      let valid = true
       for (let i in this.form) {
         if (typeof this.form[i] === 'string') {
           this.$message.error(`${i} cannot be empty!`);
-          return false
+          valid = false
+          return valid
         }
-        return true
       }
+      return valid
     },
     next() {
       if (this.active++ > 1) this.active = 3
@@ -324,7 +328,32 @@ export default {
       if (this.validate()) {
         this.postData().then(res => {
           console.log(res)
-          this.$router.push({ name: 'prediction', params: { result : res.data } })
+          let predictionResult = res.data
+          let negativeData = []
+          let positiveData = []
+          let categories = []
+
+          for (let i = 0, positive = predictionResult.data.positive; i < positive.length; i++) {
+            categories.push(positive[i][0])
+            positiveData.push((positive[i][1] * 100).toFixed(2))
+          }
+          for (let i = 0, negative = predictionResult.data.negative; i < negative.length; i++) {
+            categories.push(negative[i][0])
+            negativeData.push((negative[i][1] * (-100)).toFixed(2))
+          }
+          let temp = [0,0,0,0,0]
+          negativeData = negativeData.concat(temp)
+          positiveData = temp.concat(positiveData)
+          let params = {
+            result : predictionResult.result,
+            negativeChartData: negativeData,
+            positiveChartData: positiveData,
+            categories: categories
+          }
+          this.$router.push({
+            name: 'prediction',
+            params
+          })
         }, error => {
           this.$message.error(error)
         })

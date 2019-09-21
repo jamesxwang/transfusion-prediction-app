@@ -1,7 +1,7 @@
 # transfusion-prediction-app
 
 ## Links  
-App: [http://transfusionprediction.cn](http://transfusionprediction.cn) 
+App: [http://transfusionprediction.cn](http://transfusionprediction.cn)  
 Jenkins: [Jenkins (Admin Login required)](http://106.52.236.232:8080)
 
 变量填写列表：
@@ -34,7 +34,7 @@ Jenkins: [Jenkins (Admin Login required)](http://106.52.236.232:8080)
 11. 谷草转氨酶Aspertate Aminotransferase(AST, U/L)
 12. 谷丙转氨酶Alanine Transaminase (ALT, U/L)
 13. 凝血酶原时间Prothrombin(PT, s)
-14. 国际化比值INR International Normalized Ratio(INR)
+14. 国际化比值International Normalized Ratio(INR)
 15. 左心室射血分数Left ventricular ejection fraction(LVEF, %)
 
 
