@@ -342,8 +342,8 @@ export default {
             negativeData.push((negative[i][1] * (-100)).toFixed(2))
           }
           let temp = [0,0,0,0,0]
-          negativeData = negativeData.concat(temp)
-          positiveData = temp.concat(positiveData)
+          negativeData = temp.concat(negativeData)
+          positiveData = positiveData.concat(temp)
           let params = {
             result : predictionResult.result,
             negativeChartData: negativeData,

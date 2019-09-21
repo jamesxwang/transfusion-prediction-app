@@ -70,8 +70,6 @@ export default {
           }
         },
         yaxis: {
-          min: -50,
-          max: 50,
           title: {
             // text: 'Labels',
           },
@@ -94,13 +92,15 @@ export default {
         },
         xaxis: {
           categories: [],
-          title: {
-            text: 'Percent'
-          },
           labels: {
             formatter: function (val) {
               return Math.abs(Math.round(val)) + "%"
             }
+          }
+        },
+        yaxis: {
+          title: {
+            text: 'Percent'
           }
         }
       },
