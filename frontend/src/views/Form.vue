@@ -208,7 +208,7 @@
       </div>
       <div class="button_container">
         <el-button style="margin-top: 12px;" @click="previous" v-if="active>0" icon="el-icon-arrow-left">Previous</el-button>
-        <el-button style="margin-top: 12px;" @click="submit" v-if="active===3" type="success">Predict</el-button>
+        <el-button style="margin-top: 12px;" @click="submit" v-if="active===3" type="success" v-loading.fullscreen.lock="fullscreenLoading">Predict</el-button>
         <el-button style="margin-top: 12px;" @click="next" v-if="active<3" type="primary">Next Step<i class="el-icon-arrow-right el-icon--right"></i></el-button>
       </div>
     </div>
@@ -246,8 +246,6 @@ div{
 </style>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'form',
   components: {
@@ -301,6 +299,7 @@ export default {
       },
       negativeChartData: [],
       positiveChartData: [],
+      fullscreenLoading: false
     }
   },
   methods: {
@@ -322,6 +321,7 @@ export default {
       if (this.active-- <= 0) this.active = 0
     },
     submit() {
+      this.fullscreenLoading = true;
       this.computeGender()
       this.computeBloodType()
       this.computeBMI()
@@ -350,6 +350,7 @@ export default {
             positiveChartData: positiveData,
             categories: categories
           }
+          this.fullscreenLoading = false
           this.$router.push({
             name: 'prediction',
             params
