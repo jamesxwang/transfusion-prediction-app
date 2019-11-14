@@ -328,6 +328,25 @@ export default {
       if (this.validate()) {
         this.postData().then(res => {
           console.log(res)
+          /**
+           * data: base_value: "0.12058699"
+                  data: negative: Array(5)
+                        0: (2) ["Alanine Transaminase (ALT, U/L)", "0.05800951533352608"]
+                        1: (2) ["Left Ventricular Enlargement", "0.10535713519252037"]
+                        2: (2) ["Albumin(ALB, g/L)", "0.10879940020876946"]
+                        3: (2) ["Platelet Count (PLT, 10^9/L)", "0.1634151295798451"]
+                        4: (2) ["White Blood Cell(WBC, 10^9/L)", "0.3482271183255693"]
+                        positive: Array(5)
+                        0: (2) ["Extracorporeal circulation priming volume (mL)", "0.3346971343655343"]
+                        1: (2) ["Extracorporeal circulation priming volume/Body Mass Index", "0.2228838417831847"]
+                        2: (2) ["Height(cm)", "0.125168761957437"]
+                        3: (2) ["Age", "0.07601076830494792"]
+                        4: (2) ["Prothrombin(PT, s)", "0.07391710789487639"]
+                  result: 0
+            isError: false
+            message: "Success"
+            statusCode: 200
+           */
           let predictionResult = res.data
           let negativeData = []
           let positiveData = []
@@ -345,7 +364,8 @@ export default {
           negativeData = temp.concat(negativeData)
           positiveData = positiveData.concat(temp)
           let params = {
-            result : predictionResult.result,
+            rawData: predictionResult.data,
+            result: predictionResult.result,
             negativeChartData: negativeData,
             positiveChartData: positiveData,
             categories: categories
