@@ -10,10 +10,26 @@
       <el-main>
         <router-view/>
       </el-main>
-      <!-- <el-footer>Footer</el-footer> -->
+      <el-footer class="footer">
+        <el-row :gutter="20">
+          <el-col  :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <address>
+              Copyright ©
+              <a href="http://transfusionprediction.cn/">transfusionprediction.cn</a>
+              All Rights Reserved
+            </address>
+          </el-col>
+          <el-col  :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <address class="beian">
+              <a href="http://www.beian.gov.cn" target="_blank">湘ICP备19019235号</a>
+            </address>
+          </el-col>
+        </el-row>
+      </el-footer>
     </el-container>
   </div>
 </template>
+
 
 <style lang="scss">
 #app {
@@ -46,6 +62,17 @@
 }
 .main {
   height: 100vh;
+}
+@media only screen and (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .beian {
+    float: right;
+    text-decoration: none;
+  }
 }
 // div{
 //   margin: 20px auto;

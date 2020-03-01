@@ -1,10 +1,19 @@
 <template>
   <div class="prediction">
-    <!-- v-if="predictionResult && typeof predictionResult === 'number'" -->
-    <div v-if="predictionResult && typeof predictionResult === 'number'">
+    <div v-if="predictionResult === 0 || predictionResult === 1">
       <h1>{{ computedResult }}</h1>
+      <el-divider></el-divider>
+      <div v-if="false">
+        <el-switch
+          v-model="showAll"
+          active-text="Show More"
+          inactive-text="Show Results-Realated">
+        </el-switch>
+        <el-divider></el-divider>
+      </div>
       <div id="chart">
-        <apexchart type=bar height=500 :options="chartOptions" :series="chartOptions.series" />
+        <apexchart v-if="showAll" type=bar height=500 :options="chartOptions" :series="chartOptions.series" />
+        <apexchart v-else type=bar height=350 :options="chartOptionsRR" :series="chartOptionsRR.series" />
       </div>
     </div>
     <!-- <button @click="updateChart">Update</button> -->
@@ -23,6 +32,22 @@ export default {
   },
   methods: {
     updateChart() {
+      const data = [...this.rawData.positive, ...this.rawData.negative].sort((a, b) => b[1]-a[1]).slice(0,5)
+      const categories = data.map(d => d[0])
+      const series = data.map(d => (d[1] * 100).toFixed(2))
+      const colors = this.predictionResult === 1 ? ['#FF4560'] : ['#008FFB']
+      this.chartOptionsRR = {...this.chartOptionsRR, ...{
+        colors: colors,
+        series: [{
+          name: 'Impact Rate',
+          data: series
+        }],
+        xaxis: {
+          categories: this.predictionResult === 1 ? categories : categories
+        }
+      }}
+
+      // legacy
       this.chartOptions = {...this.chartOptions, ...{
         series: [
           {
@@ -43,9 +68,36 @@ export default {
   data() {
     return {
       predictionResult: '',
+      rawData: null,
+      showAll: false,
       negativeChartData: [],
       positiveChartData: [],
       categories: [],
+      chartOptionsRR: {
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          }
+        },
+        title: {
+          text: 'Transfusion Prediction Relevance Chart'
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"]
+        },
+        tooltip: {
+          shared: false,
+          y: {
+            formatter: function (val) {
+              return Math.abs(val) + "%"
+            }
+          }
+        },
+      },
       chartOptions: {
         chart: {
           stacked: true
@@ -117,6 +169,7 @@ export default {
     '$route.params': {
       handler: function (val) {
         if (val && val.negativeChartData && val.positiveChartData && val.categories) {
+          this.rawData = val.rawData
           this.predictionResult = val.result
           this.negativeChartData = val.negativeChartData
           this.positiveChartData = val.positiveChartData
