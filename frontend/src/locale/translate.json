@@ -1,0 +1,20 @@
+{
+  "性别（1=男，0=女）": "Gender",
+  "年龄": "Age (year)",
+  "BMI": "BMI",
+  "血型": "Blood type",
+  "心房颤动（有选1，否选0）": "Atrial fibrillation",
+  "左心室扩大（有选1，否选0）": "Left ventricular enlargement",
+  "高血压史": "Treated hypertension",
+  "糖尿病史": "Diabetes mellitus",
+  "NYHA心功能分级": "NYHA classification",
+  "体外循环预充量（ml）": "CPB priming volume",
+  "术前白细胞（10^9/L)": "White blood cell(WBC, 10^9/L)",
+  "术前血红蛋白（g/L）": "Hemoglobin (Hb, g/L)",
+  "术前血小板计数（10^9/L)": "Platelet counts (PLT, 10^9/L)",
+  "术前肌酐（umol/L ） ": "Serum creatinine(Scr,mol/L )",
+  "术前白蛋白（g/L）": "Albumin(ALB, g/L)",
+  "术前谷丙转氨酶（IU/L）": "Alanine transaminase (ALT, U/L)",
+  "术前PT（s）": "Prothrombin (PT, s)",
+  "术前左心室射血分数（%）": "Left ventricular ejection fraction(LVEF, %)"
+}
