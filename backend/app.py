@@ -12,40 +12,24 @@ CORS(app, resources=r'/*')
 
 def predict_probabilities(input_data):
     keys = [
-        "Age",
-        "Height(cm)",
-        "Weight(cm)",
+        "性别（1=男，0=女）",
+        "年龄",
         "BMI",
-        "Atrial Fibrillation",
-        "Left Ventricular Enlargement",
-        "Treated Hypertension",
-        "Diabetes mellitus",
-        "Anemia",
-        "Cerebrovascular diseases",
-        "NYHA classification",
-        "ASA classification",
-        "Extracorporeal circulation priming volume (mL)",
-        "Red Blood Cell (RBC, 10^12/L)",
-        "White Blood Cell(WBC, 10^9/L)",
-        "Hemoglobin (Hb, g/dL)",
-        "Hematocrit (HCT, %)",
-        "Platelet Count (PLT, 10^9/L)",
-        "Serum creatinine(Scr,mol/L )",
-        "Total protein(TP, g/L)",
-        "Albumin(ALB, g/L)",
-        "Globulin(GLO, g/L)",
-        "Alanine Transaminase (ALT, U/L)",
-        "Aspertate Aminotransferase(AST, U/L)",
-        "Prothrombin(PT, s)",
-        "INR International Normalized Ratio(INR)",
-        "Left ventricular ejection fraction(LVEF, %)",
-        "Gender_female",
-        "Gender_male",
-        "Blood Type_A",
-        "Blood Type_AB",
-        "Blood Type_B",
-        "Blood Type_O",
-        "Extracorporeal circulation priming volume/Body Mass Index"
+        "血型",
+        "心房颤动（有选1，否选0）",
+        "左心室扩大（有选1，否选0）",
+        "高血压史",
+        "糖尿病史",
+        "NYHA心功能分级",
+        "体外循环预充量（ml）",
+        "术前白细胞（10^9/L)",
+        "术前血红蛋白（g/L）",
+        "术前血小板计数（10^9/L)",
+        "术前肌酐（umol/L ） ",
+        "术前白蛋白（g/L）",
+        "术前谷丙转氨酶（IU/L）",
+        "术前PT（s）",
+        "术前左心室射血分数（%）"
     ]
     obj = {}
     for key in keys:
@@ -54,7 +38,7 @@ def predict_probabilities(input_data):
     for col in inputJSON.columns:
         obj[col] = inputJSON.loc[0][col]
     input_dataframe = pd.DataFrame.from_dict({"0": obj}, orient='index')
-    models = joblib.load('./models/models.pkl')
+    models = joblib.load('./models/xgb_model.pkl')
     cv_num = len(models)
     pred_proba = np.zeros((input_dataframe.shape[0], cv_num))
     for i in range(cv_num):                
