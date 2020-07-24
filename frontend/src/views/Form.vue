@@ -147,12 +147,12 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Hemoglobin (Hb, g/dL):</el-col>
+          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Hemoglobin (Hb, g/L):</el-col>
           <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
             <el-input
               type="number"
               v-model.number="form['术前血红蛋白（g/L）']"
-              placeholder="Hemoglobin (Hb, g/dL)"
+              placeholder="Hemoglobin (Hb, g/L)"
             ></el-input>
           </el-col>
         </el-row>
