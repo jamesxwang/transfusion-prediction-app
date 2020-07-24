@@ -48,6 +48,7 @@ def predict_probabilities(input_data):
         else:
             shap_values = shap_values + shap.TreeExplainer(models[i]).shap_values(input_dataframe)
     pred_proba = pred_proba.mean(axis=1)
+    pred_proba = pred_proba[0]
     result = int(pred_proba>0.7)
     explainer = shap.TreeExplainer(models[0])
     shap_values = explainer.shap_values(input_dataframe)
@@ -69,6 +70,7 @@ def predict_probabilities(input_data):
 
     response = {
         'result': result,
+        'prob': pred_proba,
         'base_value': str(explainer.expected_value),
         'data': {
             'negative': negativePercentageL,

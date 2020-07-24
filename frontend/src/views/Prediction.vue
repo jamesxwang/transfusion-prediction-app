@@ -2,6 +2,7 @@
   <div class="prediction">
     <div v-if="predictionResult === 0 || predictionResult === 1">
       <h1>{{ computedResult }}</h1>
+      <p>The probability is {{ computedPredictionProb }} %</p>
       <el-divider></el-divider>
       <div v-if="false">
         <el-switch v-model="showAll" active-text="Show More" inactive-text="Show Results-Realated"></el-switch>
@@ -204,6 +205,9 @@ export default {
       } else {
         return "";
       }
+    },
+    computedPredictionProb: function() {
+      return (this.predictionProb * 100).toFixed(2);
     }
   },
   watch: {
@@ -217,6 +221,7 @@ export default {
         ) {
           this.rawData = val.rawData;
           this.predictionResult = val.result;
+          this.predictionProb = val.prob;
           this.negativeChartData = val.negativeChartData;
           this.positiveChartData = val.positiveChartData;
           this.categories = val.categories;

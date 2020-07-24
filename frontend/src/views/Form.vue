@@ -410,6 +410,7 @@ export default {
             let params = {
               rawData: predictionResult.data,
               result: predictionResult.result,
+              prob: predictionResult.prob,
               negativeChartData: negativeData,
               positiveChartData: positiveData,
               categories: categories
