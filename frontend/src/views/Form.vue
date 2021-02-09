@@ -203,16 +203,6 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">Prothrombin(PT, s):</el-col>
-          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
-            <el-input
-              type="number"
-              v-model.number="form['术前PT（s）']"
-              placeholder="Prothrombin(PT, s)"
-            ></el-input>
-          </el-col>
-        </el-row>
-        <el-row>
           <el-col
             :xs="12"
             :sm="12"
@@ -225,6 +215,16 @@
               type="number"
               v-model.number="form['术前左心室射血分数（%）']"
               placeholder="Left ventricular ejection fraction(LVEF, %)"
+            ></el-input>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :xs="12" :sm="12" :md="10" :lg="14" :xl="14">International Normalized Ratio（INR）:</el-col>
+          <el-col :xs="12" :sm="8" :md="12" :lg="8" :xl="8">
+            <el-input
+              type="number"
+              v-model.number="form['术前INR']"
+              placeholder="International Normalized Ratio（INR）"
             ></el-input>
           </el-col>
         </el-row>
@@ -284,26 +284,7 @@ div {
 </style>
 
 <script>
-const translation = {
-  "性别（1=男，0=女）": "Gender",
-  年龄: "Age (year)",
-  BMI: "BMI",
-  血型: "Blood type",
-  "心房颤动（有选1，否选0）": "Atrial fibrillation",
-  "左心室扩大（有选1，否选0）": "Left ventricular enlargement",
-  高血压史: "Treated hypertension",
-  糖尿病史: "Diabetes mellitus",
-  NYHA心功能分级: "NYHA classification",
-  "体外循环预充量（ml）": "CPB priming volume",
-  "术前白细胞（10^9/L)": "White blood cell(WBC, 10^9/L)",
-  "术前血红蛋白（g/L）": "Hemoglobin (Hb, g/L)",
-  "术前血小板计数（10^9/L)": "Platelet counts (PLT, 10^9/L)",
-  "术前肌酐（umol/L ） ": "Serum creatinine(Scr,mol/L )",
-  "术前白蛋白（g/L）": "Albumin(ALB, g/L)",
-  "术前谷丙转氨酶（IU/L）": "Alanine transaminase (ALT, U/L)",
-  "术前PT（s）": "Prothrombin (PT, s)",
-  "术前左心室射血分数（%）": "Left ventricular ejection fraction(LVEF, %)"
-};
+import translation from "../locale/translate";
 
 export default {
   name: "form",
@@ -345,8 +326,8 @@ export default {
         "术前肌酐（umol/L ） ": "",
         "术前白蛋白（g/L）": "",
         "术前谷丙转氨酶（IU/L）": "",
-        "术前PT（s）": "",
-        "术前左心室射血分数（%）": ""
+        "术前左心室射血分数（%）": "",
+        "术前INR": "",
       },
       negativeChartData: [],
       positiveChartData: [],

@@ -1,4 +1,4 @@
-{
+export default {
   "性别（1=男，0=女）": "Gender",
   "年龄": "Age (year)",
   "BMI": "BMI",
@@ -15,6 +15,6 @@
   "术前肌酐（umol/L ） ": "Serum creatinine(Scr,mol/L )",
   "术前白蛋白（g/L）": "Albumin(ALB, g/L)",
   "术前谷丙转氨酶（IU/L）": "Alanine transaminase (ALT, U/L)",
-  "术前PT（s）": "Prothrombin (PT, s)",
-  "术前左心室射血分数（%）": "Left ventricular ejection fraction(LVEF, %)"
+  "术前左心室射血分数（%）": "Left ventricular ejection fraction(LVEF, %)",
+  "术前INR": "International Normalized Ratio（INR）",
 }

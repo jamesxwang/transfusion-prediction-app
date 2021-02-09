@@ -28,8 +28,8 @@ def predict_probabilities(input_data):
         "术前肌酐（umol/L ） ",
         "术前白蛋白（g/L）",
         "术前谷丙转氨酶（IU/L）",
-        "术前PT（s）",
-        "术前左心室射血分数（%）"
+        "术前左心室射血分数（%）",
+        "术前INR"
     ]
     obj = {}
     for key in keys:
