@@ -49,7 +49,7 @@ def predict_probabilities(input_data):
             shap_values = shap_values + shap.TreeExplainer(models[i]).shap_values(input_dataframe)
     pred_proba = pred_proba.mean(axis=1)
     pred_proba = pred_proba[0]
-    result = int(pred_proba>0.7)
+    result = int(pred_proba>0.35)
     explainer = shap.TreeExplainer(models[0])
     shap_values = explainer.shap_values(input_dataframe)
     positiveTotal = 0
